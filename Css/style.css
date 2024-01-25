@@ -1,0 +1,476 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {
+    height: 2950px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+:root{
+    --maincolor:black;
+    --subcolor:#F7559A;
+}
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.section-title{
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+.section-header .line{
+    display: block;
+    width: 100px;
+    margin: auto;
+    height: 3px;
+    background-color: var(--subcolor);
+    transition: width .5s;
+}
+.section-header:hover .line{
+    width: 150px;
+}
+.pd{
+    padding: 40px 0;
+}
+
+/*--------------------------------------------------------------------------*/
+header{
+    width: 100%;
+}
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    margin-top: 20px;
+    width: 200px;
+}
+
+
+nav{
+    width: 60%;
+    float: left;
+    text-align: center;
+    padding: 20px;
+}
+nav ul{
+    margin-top: 15px;
+}
+nav ul li{
+    display: inline-block;
+}
+nav ul li a{
+    color: var(--maincolor);
+    position: relative;
+    padding: 10px 19px;
+    display: block;
+    font-weight: bold;
+    position: relative;
+}
+
+
+nav ul li .menu{
+    position: relative;
+}
+.menu-items{
+    position: absolute;
+    visibility: hidden;
+    width: 450px;
+    background-color: #fff;
+    border: 2px solid var(--subcolor);
+    padding: 10px;
+    margin-top: 5px;
+    transform: scale(0);
+    transition: transform 0.5s , visibility 0.5s;
+    opacity: 0;
+    z-index: 10;
+}
+.menu:hover .menu-items{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+.menu ul{
+    display: table-cell;
+    text-align: left;
+}
+.menu ul li:first-child a {
+    display: block;
+    border-bottom: 1px dotted var(--subcolor);
+    margin-bottom: 10px;
+}
+
+
+
+.header-content nav ul .nav-link:before,
+.header-content nav ul .nav-link:after{
+content:"";
+position: absolute;
+border-style: solid; 
+left: 0;
+top:0; 
+transition: transform 0.2s;
+}
+.header-content nav ul .nav-link:before{
+    border-width: 0 2px;
+    height: 100%; 
+    width: 95%;
+    transform: scale3d(1,0,1);
+}
+.header-content nav ul .nav-link:hover:before{
+    transform: scale3d(1,1,1);
+    border-color: var(--subcolor);
+}
+.header-content nav ul .nav-link:after{
+border-width: 2px 0;
+height: 91%; 
+width: 98%;
+transform: scale3d(0,1,1);
+transform-origin: left;
+}
+.header-content nav ul .nav-link:hover:after{
+    transform: scale3d(1,1,1);
+    transition-delay: .2s;
+    border-color: var(--subcolor);
+}
+
+.login{
+    text-align: right;
+}
+.login li{
+    display: inline-block;
+}
+.login li i {
+    padding: 10px ;
+    font-weight: bold;
+    font-size: 25px;
+}
+.header-content .login ul li:last-child i {
+    position: relative;
+    margin-right: 11px;
+    }
+    .header-content .login ul li:last-child i::after{
+        position: absolute;
+        content: "4";
+        background-color: var(--subcolor);
+        color: #fff;
+        border-radius: 50%;
+        padding: 4px;
+        font-size: 13px;
+        bottom: -4px;
+    }
+/******************************************************************************************/
+
+.home{
+    margin-top: 20px;
+}
+.home-cover{
+    width: 100%;
+    height: 80vh;
+    background: url(../images/cover.jpg);
+    background-size: cover;
+    position: relative;
+}
+.home-content{
+    position: absolute;
+    top: 40%;
+    left: 15%;
+}
+.home-content h1{
+    color: #fff;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.home-content a{
+    background-color: var(--subcolor);
+    color: #fff;
+    padding: 5px 7px;
+    border-radius: 3px;
+}
+.home-content a:hover{
+    background-color: #fff;
+    color:var(--subcolor);
+}
+/*category-----------------------------------------------------------------*/
+.category-items{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;  
+    grid-gap:10px;
+}
+.category-img{
+    position: relative;
+    background-color:rgb(234, 223, 233);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.category-items img{
+    width: 80%;
+    height: 350px;
+    margin-bottom: 25px;
+}
+.category .item-subtitle{
+    color: var(--subcolor);
+    font-weight: normal;
+}
+.category .item-title {
+    font-size: 19px;
+}
+.category-item {
+    position: relative;
+}
+.category-item i{
+    width: 30px;
+    height: 30px;
+    background-color: var(--subcolor);
+    color: #fff;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.1;
+}
+.category-item:hover i{
+    visibility: visible;
+    opacity: 1;
+}
+/* DISCOUNT................................................................................................... */
+.offer {
+    margin:30px 0;
+    display: flex;
+}
+.offer-desc{
+    flex:2;
+    background: rgb(234, 223, 233);
+    padding: 20px;
+    position: relative;
+}
+.offer-item {
+    flex: 1;
+    height: 300px;
+    position: relative;
+}
+.offer-item-info{
+    position: absolute;
+    top:20px;
+    left: 15px;
+}
+.offer-item-info h3{
+    font-weight: normal;
+    color: var(--subcolor);
+}
+.offer-item-info h2{
+    font-size: 20px;
+}
+.offer-item:nth-child(2){
+    background-image: url(../images/discount3.jpg);
+    background-size: cover;
+    margin:0 20px;
+    transition: transform 0.5s;
+}
+.offer-item:nth-child(2):hover{
+    transform: scale(1.1);
+}
+.offer-item:nth-child(3){
+    background-image: url(../images/discount2.jpg);
+    background-size: cover; 
+    transition: transform .5s;
+}
+.offer-item:nth-child(3):hover{
+    transform: scale(1.1);
+}
+
+
+.offer-desc .top{
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 20px;
+}
+.offer-desc .top .icon{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 50px;
+    color: var(--maincolor);
+}
+
+.offer-desc .top +p{
+    line-height: 1.7;
+}
+.offer-desc .bullets span{
+    display: inline-block;
+    width:50px;
+    height: 2px;
+    background: var(--maincolor);
+    margin-left: 10px;
+}
+.offer-desc .bullets{
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+
+/* serviceS.................................................................................................. */
+.services {
+    display:flex;
+    margin-bottom: 55px;
+}
+.service-item{
+    flex:1;
+    text-align: center;
+    border-right: 1px solid var(--maincolor);
+}
+.service-item:last-child{
+    border:0;
+}
+.service-info h3{
+    font-size: 17px;
+}
+.service-info span{
+    color: gray;
+    font-size: 15px;
+}
+.service-icon{
+    background-image: url(../images/service-icon.png);
+    height: 55px;
+    background-repeat: no-repeat;
+}
+.service-icon-1{
+background-position: center 5px;
+transition: all .5s;
+}
+.service-item:hover .service-icon-1{
+    background-position: center -86px;
+}
+.service-icon-2{
+background-position: center -180px;
+transition: all .5s;
+}
+.service-item:hover .service-icon-2{
+    background-position: center -273px;
+}
+.service-icon-3{
+background-position: center -366px;
+transition: all .5s;
+}
+.service-item:hover .service-icon-3{
+    background-position: center -455px;
+}
+.service-icon-4{
+background-position: center -549px;
+transition: all .5s;
+}
+    .service-item:hover .service-icon-4{
+    background-position: center -639px;
+}
+.service-icon-5{
+background-position: center -734px;
+transition: all .5s;
+}
+.service-item:hover .service-icon-5{
+    background-position: center -826px;
+}
+
+/* PRODUCTS.................................................................................................. */
+.list-product{
+    display: flex;
+    justify-content: center;
+}
+.list-product li{
+    margin: 10px 20px;
+}
+.products-items{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:10px;
+    margin: 20px 0px;
+}
+.product-item{
+    border: solid 1px var(--subcolor);
+    padding: 10px;
+}
+.product-item img{
+    display: block;
+    width: 90%;
+    height: 400px;
+    margin: auto;
+}
+.product-img{
+    position: relative;
+}
+.product-overlay{
+    width: 90%;
+    height: 400px;
+    background-color: rgba(234, 223, 233,0.5);
+    position: absolute;
+    top: 0;
+    left: 5%;
+    transform:scalex(0);
+    transition: transform 0.3s;
+}
+.product-overlay img{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 250px;
+    height: 100px;
+}
+.product-overlay ul{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.product-overlay ul li{
+    width: 35px;
+    height: 40px;
+    background-color: var(--subcolor);
+    display: inline-block;
+    text-align: center;
+}
+.product-overlay ul li i{
+    font-size: 25px;
+    color: #fff;
+    line-height: 40px;
+}
+.product-item:hover .product-overlay{
+    transform: scalex(1);
+}
+.product-item:hover .pro-img{
+    opacity: 0.5;
+}
+.product-item i.active{
+    color:goldenrod;
+}
+.product-info{
+    margin-left: 5%;
+}
+.product-info span{
+    display: block;
+    margin: 5px 0;
+}
+.product-info i{
+    margin-top: 10px;
+}
